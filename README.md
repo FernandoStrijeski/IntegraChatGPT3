@@ -12,3 +12,5 @@ Para realizar a conexão na forma que eu codei é preciso criar um arquivo chama
   "apiKey": "SUA_CHAVE",
   "organization": "SUA_ORGANIZACAO"
 }
+
+![alt text](https://raw.githubusercontent.com/FernandoStrijeskiLinx/IntegraChatGPT3/main/NET06_VS22/Demo.png)
