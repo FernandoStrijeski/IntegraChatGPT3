@@ -1,0 +1,36 @@
+﻿@page
+@using IntegraChatGPT_3_VS22.Classes;
+@model IndexModel
+@{
+    ViewData["Title"] = "Página inicial";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Integração Chat-GPT API</h1>
+    <p>Seguindo o tutorial <a href="https://platform.openai.com/docs/api-reference/introduction">Integração API</a> fornecido pela OpenAI.</p>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@   
+    @{
+        ConsomeServico consomeServico = new();
+        string statusConexao = (IntegraServico.integra.Conectado ? "Conectado" : "Não conectado");
+    }
+
+    <label id="statusConexao">@statusConexao</label>
+    <br />
+    <label id="modeloUtilizado">O modelo utilizado é: @consomeServico.GetModel().Result?.ToString();</label>
+    <br />
+    <label id="statusConexao">Agora vamos testar algumas funcionalidades...</label>
+    <br />
+    <br />
+    <br />
+    <label id="statusConexao">Vamos começar! O que deseja?</label>
+    <br />
+    
+    <textarea id="txConsulta" maxlength="2000" cols="3" value="como se escreve gato em inglês?"></textarea>
+    <br />
+    <button id="btEnviar" onclick="enviar();">Enviar</button>
+    <br /><br />
+    <label>Resposta:</label>
+    <br />
+    <label id="resposta"></label>
+    <textarea id="txResposta"></textarea>
+</div>
