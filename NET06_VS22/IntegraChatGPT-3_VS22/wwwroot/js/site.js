@@ -3,8 +3,17 @@
 
 // Write your JavaScript code.
 
-function enviar() {
+function enviarConversa() {
     getConclusion(document.getElementById('txConsulta').value);
+}
+
+function enviarAfinamento() {
+    const resultAfinamento = document.getElementById('respostaAfinamento');
+    const txAfinamento = document.getElementById('txAfinamento');
+    importFineTune(txAfinamento.value)
+
+    resultAfinamento.value = "";
+
 }
 
 function getConclusion(question) {
@@ -18,6 +27,38 @@ function getConclusion(question) {
         })
         .then(data => {
             const result = document.getElementById('txResposta');
+            result.textContent = data.message.content;
+        })
+        .catch(error => console.error(error));
+}
+
+function addFineTune(prompt, listaJson) {
+    const url = `/api/addFineTune?prompt=${encodeURIComponent(prompt)}&listaJson=${encodeURIComponent(listaJson)}`;
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao alimentar o fine tuning.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const result = document.getElementById('txResposta');
+            result.textContent = data.message.content;
+        })
+        .catch(error => console.error(error));
+}
+
+function importFineTune(prompts) {
+    const url = `/api/importFineTune?prompts=${encodeURIComponent(prompts)}`;
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao importar o fine tuning.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const result = document.getElementById('respostaAfinamento');
             result.textContent = data.message.content;
         })
         .catch(error => console.error(error));

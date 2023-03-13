@@ -11,6 +11,7 @@
     @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@   
     @{
         ConsomeServico consomeServico = new();
+        IntegraServico.IniciaServico();
         string statusConexao = (IntegraServico.integra.Conectado ? "Conectado" : "Não conectado");
     }
 
@@ -22,12 +23,26 @@
     <br />
     <br />
     <br />
-    <label id="statusConexao">Vamos começar! O que deseja?</label>
+    <label>Fine Tuning</label>
+    <br />
+    <label>Envie no formato JSONL as informações para afinamento personalizado:</label>
+    <br />
+    <textarea id="txAfinamento" cols="10"></textarea>
+    <br />
+    <br />
+    <br />
+    <button id="btGravar" onclick="enviarAfinamento();">Gravar</button>
+    <br />
+    <label>Resposta:</label>
+    <label id="respostaAfinamento"></label>
+    <br />
+    <br />
+    <label id="statusConexao">Vamos conversar! O que deseja?</label>
     <br />
     
-    <textarea id="txConsulta" maxlength="2000" cols="3" value="como se escreve gato em inglês?"></textarea>
+    <textarea id="txConsulta" maxlength="2000" cols="3"></textarea>
     <br />
-    <button id="btEnviar" onclick="enviar();">Enviar</button>
+    <button id="btEnviar" onclick="enviarConversa();">Enviar</button>
     <br /><br />
     <label>Resposta:</label>
     <br />

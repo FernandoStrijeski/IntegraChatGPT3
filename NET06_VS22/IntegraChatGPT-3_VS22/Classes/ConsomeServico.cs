@@ -6,7 +6,7 @@ namespace IntegraChatGPT_3_VS22.Classes
 {
     public class ConsomeServico
     {     
-        public async Task<Model?> GetModel() => await IntegraServico.integra.GetModel("text-davinci-003");
+        public async Task<Model?> GetModel() => await IntegraServico.integra.GetModel(IntegraServico.FineTuneModelHumanus);
         
         public async Task<ChatResponse?> GetConclusion() => await IntegraServico.integra.GetConclusion();
 

@@ -17,8 +17,12 @@ body {
   margin-bottom: 60px;
 }
 
-#txConsulta{
-    width: 500px;    
+#txConsulta, #txAfinamento {
+    width: 1000px;
+}
+
+#txAfinamento {
+    height: 250px;
 }
 
 #txResposta {
